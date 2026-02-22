@@ -123,7 +123,7 @@ async function readStdin(): Promise<string> {
             const vp = getVaultPath(parsedArgs.vault_path);
             const sub = parsedArgs.subfolder ? String(parsedArgs.subfolder) : '**';
             const pattern = path.join(sub, '*.md');
-            const files = await glob(pattern, { cwd: vp });
+            const files = await glob(pattern, { cwd: vp, follow: true });
             result = JSON.stringify(files.slice(0, 100), null, 2) + (files.length > 100 ? `\n...and ${files.length - 100} more.` : '');
         } else if (toolName === 'obsidian_read_note') {
             const vp = getVaultPath(parsedArgs.vault_path);
@@ -159,7 +159,7 @@ async function readStdin(): Promise<string> {
         } else if (toolName === 'obsidian_search_notes') {
             const vp = getVaultPath(parsedArgs.vault_path);
             const query = String(parsedArgs.query).toLowerCase();
-            const files = await glob('**/*.md', { cwd: vp });
+            const files = await glob('**/*.md', { cwd: vp, follow: true });
             const matches: string[] = [];
             for (const f of files) {
                 if (f.toLowerCase().includes(query)) {
@@ -204,7 +204,7 @@ async function readStdin(): Promise<string> {
             const target = String(parsedArgs.file_name).replace(/\.md$/i, ''); 
             const linkRegex = new RegExp(`\\[\\[${target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([\\]\\|#])`, 'i');
             
-            const files = await glob('**/*.md', { cwd: vp });
+            const files = await glob('**/*.md', { cwd: vp, follow: true });
             
             const backlinks: string[] = [];
             const batchSize = 50;
@@ -496,7 +496,7 @@ async function readStdin(): Promise<string> {
           const vp = getVaultPath(args?.vault_path as string);
           const sub = args?.subfolder ? String(args.subfolder) : '**';
           const pattern = path.join(sub, '*.md');
-          const files = await glob(pattern, { cwd: vp });
+          const files = await glob(pattern, { cwd: vp, follow: true });
           return { content: [{ type: 'text', text: JSON.stringify(files.slice(0, 100), null, 2) + (files.length > 100 ? `\n...and ${files.length - 100} more.` : '') }] };
       }
       if (name === 'obsidian_read_note') {
@@ -539,7 +539,7 @@ async function readStdin(): Promise<string> {
       if (name === 'obsidian_search_notes') {
           const vp = getVaultPath(args?.vault_path as string);
           const query = String(args?.query).toLowerCase();
-          const files = await glob('**/*.md', { cwd: vp });
+          const files = await glob('**/*.md', { cwd: vp, follow: true });
           const matches: string[] = [];
           for (const f of files) {
               if (f.toLowerCase().includes(query)) {
@@ -579,7 +579,7 @@ async function readStdin(): Promise<string> {
           const target = String(args?.file_name).replace(/\.md$/i, ''); 
           const linkRegex = new RegExp(`\\[\\[${target.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([\\]\\|#])`, 'i');
           
-          const files = await glob('**/*.md', { cwd: vp });
+          const files = await glob('**/*.md', { cwd: vp, follow: true });
           
           // Parallel processing with simple concurrency control (batches of 50)
           const backlinks: string[] = [];

@@ -60110,7 +60110,7 @@ ${segment}` : segment;
   async indexVault(vaultPath, force = false) {
     const embedder = Embedder.getInstance();
     const db = await this.getDb();
-    const files = await glob("**/*.md", { cwd: vaultPath, absolute: true });
+    const files = await glob("**/*.md", { cwd: vaultPath, absolute: true, follow: true });
     console.error(`Found ${files.length} notes in ${vaultPath}`);
     let previousHashes = {};
     if (!force) {
@@ -60396,7 +60396,7 @@ async function readStdin() {
         const vp = getVaultPath(parsedArgs.vault_path);
         const sub = parsedArgs.subfolder ? String(parsedArgs.subfolder) : "**";
         const pattern = path5.join(sub, "*.md");
-        const files = await glob(pattern, { cwd: vp });
+        const files = await glob(pattern, { cwd: vp, follow: true });
         result = JSON.stringify(files.slice(0, 100), null, 2) + (files.length > 100 ? `
 ...and ${files.length - 100} more.` : "");
       } else if (toolName === "obsidian_read_note") {
@@ -60435,7 +60435,7 @@ async function readStdin() {
       } else if (toolName === "obsidian_search_notes") {
         const vp = getVaultPath(parsedArgs.vault_path);
         const query = String(parsedArgs.query).toLowerCase();
-        const files = await glob("**/*.md", { cwd: vp });
+        const files = await glob("**/*.md", { cwd: vp, follow: true });
         const matches = [];
         for (const f of files) {
           if (f.toLowerCase().includes(query)) {
@@ -60482,7 +60482,7 @@ Content: ${r.text}`).join("\n---\n");
         const vp = getVaultPath(parsedArgs.vault_path);
         const target = String(parsedArgs.file_name).replace(/\.md$/i, "");
         const linkRegex = new RegExp(`\\[\\[${target.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([\\]\\|#])`, "i");
-        const files = await glob("**/*.md", { cwd: vp });
+        const files = await glob("**/*.md", { cwd: vp, follow: true });
         const backlinks = [];
         const batchSize = 50;
         for (let i2 = 0; i2 < files.length; i2 += batchSize) {
@@ -60780,7 +60780,7 @@ Content: ${r.text}`).join("\n---\n");
         const vp = getVaultPath(args2?.vault_path);
         const sub = args2?.subfolder ? String(args2.subfolder) : "**";
         const pattern = path5.join(sub, "*.md");
-        const files = await glob(pattern, { cwd: vp });
+        const files = await glob(pattern, { cwd: vp, follow: true });
         return { content: [{ type: "text", text: JSON.stringify(files.slice(0, 100), null, 2) + (files.length > 100 ? `
 ...and ${files.length - 100} more.` : "") }] };
       }
@@ -60826,7 +60826,7 @@ Content: ${r.text}`).join("\n---\n");
       if (name2 === "obsidian_search_notes") {
         const vp = getVaultPath(args2?.vault_path);
         const query = String(args2?.query).toLowerCase();
-        const files = await glob("**/*.md", { cwd: vp });
+        const files = await glob("**/*.md", { cwd: vp, follow: true });
         const matches = [];
         for (const f of files) {
           if (f.toLowerCase().includes(query)) {
@@ -60871,7 +60871,7 @@ Content: ${r.text}
         const vp = getVaultPath(args2?.vault_path);
         const target = String(args2?.file_name).replace(/\.md$/i, "");
         const linkRegex = new RegExp(`\\[\\[${target.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}([\\]\\|#])`, "i");
-        const files = await glob("**/*.md", { cwd: vp });
+        const files = await glob("**/*.md", { cwd: vp, follow: true });
         const backlinks = [];
         const batchSize = 50;
         for (let i2 = 0; i2 < files.length; i2 += batchSize) {

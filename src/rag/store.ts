@@ -232,7 +232,7 @@ export class VaultIndexer {
     const db = await this.getDb();
 
     // Find all markdown files
-    const files = await glob('**/*.md', { cwd: vaultPath, absolute: true });
+    const files = await glob('**/*.md', { cwd: vaultPath, absolute: true, follow: true });
     console.error(`Found ${files.length} notes in ${vaultPath}`);
 
     // Load previous file hashes for incremental indexing
