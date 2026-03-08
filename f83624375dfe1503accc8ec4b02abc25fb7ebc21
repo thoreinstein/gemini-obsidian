@@ -1,0 +1,25 @@
+RELEASE_NOTES.md
+  b33651df96fc3cd3 1-25
+CHANGELOG.md
+  b33651df96fc3cd3 5-23,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "f83624375dfe1503accc8ec4b02abc25fb7ebc21",
+  "prompts": {
+    "b33651df96fc3cd3": {
+      "agent_id": {
+        "tool": "gemini",
+        "id": "7db0375b-49ee-436e-a441-9bdb339e7f9a",
+        "model": "gemini-3-flash-preview"
+      },
+      "human_author": "Jim Myers <thoreinstein8@gmail.com>",
+      "messages": [],
+      "total_additions": 45,
+      "total_deletions": 86,
+      "accepted_lines": 45,
+      "overriden_lines": 0
+    }
+  }
+}
