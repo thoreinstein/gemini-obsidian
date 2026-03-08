@@ -1,0 +1,47 @@
+package.json
+  e05b07062a52a0f2 10,41-42
+vitest.config.ts
+  e05b07062a52a0f2 1-7
+test/findSectionRange.test.ts
+  e05b07062a52a0f2 1-90
+test/utils.test.ts
+  e05b07062a52a0f2 1,4-109
+  d1a0857d49abbece 2-3,110-141
+test/vault-ops.test.ts
+  e05b07062a52a0f2 1-140
+test/chunking.test.ts
+  e05b07062a52a0f2 1-116
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.8",
+  "base_commit_sha": "7a9647ed075b88760a2cb574212da1915267d05c",
+  "prompts": {
+    "d1a0857d49abbece": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3593ccb-94fd-4a3f-a361-752ef4b59912",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Jim Myers <thoreinstein8@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 34,
+      "overriden_lines": 0
+    },
+    "e05b07062a52a0f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1e09bcf4-8764-44fc-8aca-41573ca90cfe",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Jim Myers <thoreinstein8@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 490,
+      "overriden_lines": 0
+    }
+  }
+}
