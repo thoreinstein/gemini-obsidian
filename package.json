@@ -47,6 +47,6 @@
     "gray-matter": "^4.0.3",
     "md5": "^2.3.0",
     "typescript": "^6.0.2",
-    "vitest": "^3.2.1"
+    "vitest": "^3.2.6"
   }
 }
