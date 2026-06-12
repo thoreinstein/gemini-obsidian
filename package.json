@@ -42,11 +42,11 @@
     "@types/md5": "^2.3.6",
     "@types/node": "^25.2.0",
     "@xenova/transformers": "^2.17.2",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "glob": "^13.0.1",
     "gray-matter": "^4.0.3",
     "md5": "^2.3.0",
     "typescript": "^6.0.2",
-    "vitest": "^3.2.1"
+    "vitest": "^4.1.8"
   }
 }
